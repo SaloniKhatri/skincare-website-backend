@@ -1,24 +1,23 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
+
 //Environment variables must come before database connection
 const dotenv = require('dotenv');
 dotenv.config();
+
+const cookieParser = require('cookie-parser')
+
 //Database connection
 const connectToDb = require('./config/db');
 connectToDb();
 
 
-const cookieParser = require('cookie-parser')
 
 
-
-
-
-
+const app = express();
 // Allow requests from frontend
 app.use(cors({
-  origin: ["http://localhost:5173", "https://skincare-website-frontend.vercel.app/"],
+  origin: ["http://localhost:5173", "https://skincare-website-frontend.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
