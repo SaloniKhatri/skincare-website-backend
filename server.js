@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -20,7 +18,7 @@ const cookieParser = require('cookie-parser')
 
 // Allow requests from frontend
 app.use(cors({
-  origin: ["http://localhost:5173", "https://skincare-website-frontend-6n5u.vercel.app"],
+  origin: ["http://localhost:5173", "https://skincare-website-frontend.vercel.app/"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
