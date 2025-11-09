@@ -34,10 +34,13 @@ const registerUser = async (req, res) => {
       console.log("❌ Invalid user data");
       res.status(400).json({ message: "Invalid user data" });
     }
-  } catch (error) {
-    console.error("❌ Register Error (catch):", error);
-    res.status(500).json({ message: "Server error", error: error.message });
+ catch (error) {
+  console.error("❌ Register Error (catch):", error);
+  if (error.name === "ValidationError") {
+    console.error("🧩 Validation Error Details:", error.errors);
   }
+  res.status(500).json({ message: "Server error", error: error.message });
+}
 };
 
 // Login user
