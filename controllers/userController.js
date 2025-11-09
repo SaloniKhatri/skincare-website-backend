@@ -4,7 +4,14 @@ const generateToken = require("../utils/generateToken");
 // Register new user
 const registerUser = async (req, res) => {
   try {
+    console.log("📩 Register request body:", req.body);
+
     const { name, email, password } = req.body;
+
+     if (!name || !email || !password) {
+      console.log("⚠️ Missing fields:", { name, email, password });
+      return res.status(400).json({ message: "All fields are required" });
+    }
 
     const userExists = await User.findOne({ email });
 
